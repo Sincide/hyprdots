@@ -4,36 +4,6 @@ modules = ["bash"]
 channel = "stable-24_05"
 
 [workflows]
-runButton = "Project"
-
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Hyprland Install Script"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "test_install"
-
-[[workflows.workflow]]
-name = "Hyprland Install Script"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "bash install.sh"
-
-[[workflows.workflow]]
-name = "test_install"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "chmod +x install.sh && ./install.sh"
 
 [deployment]
 run = ["sh", "-c", "bash install.sh"]
