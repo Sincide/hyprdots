@@ -1,0 +1,95 @@
+{
+    "name": "top-bar",
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "spacing": 4,
+    "margin-top": 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["pulseaudio", "network", "clock", "tray"],
+    
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1️⃣",
+            "2": "2️⃣",
+            "3": "3️⃣",
+            "4": "4️⃣",
+            "5": "5️⃣",
+            "6": "6️⃣",
+            "7": "7️⃣",
+            "8": "8️⃣",
+            "9": "9️⃣",
+            "10": "🔟",
+            "urgent": "🔥",
+            "focused": "",
+            "default": "⚫"
+        },
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+    
+    "hyprland/mode": {
+        "format": "<span style=\"italic\">🎯 {}</span>"
+    },
+    
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 60,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "🦊 Firefox: $1",
+            "(.*) - Visual Studio Code": "💻 VSCode: $1",
+            "(.*) - Thunar": "📁 Files: $1"
+        }
+    },
+    
+    "tray": {
+        "icon-size": 20,
+        "spacing": 8
+    },
+    
+    "clock": {
+        "format": "🕐 {:%H:%M}",
+        "format-alt": "📅 {:%Y-%m-%d}",
+        "tooltip-format": "<big>📅 {:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "gsimplecal"
+    },
+    
+    "network": {
+        "format-wifi": "📶 {essid}",
+        "format-ethernet": "🌐 Ethernet",
+        "tooltip-format": "📡 {ifname} via {gwaddr}\n⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}",
+        "format-linked": "🔗 {ifname} (No IP)",
+        "format-disconnected": "❌ Disconnected",
+        "format-alt": "📊 {ifname}: {ipaddr}/{cidr}",
+        "on-click-right": "nm-connection-editor"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "🎧 {volume}%",
+        "format-bluetooth-muted": "🎧 🔇",
+        "format-muted": "🔇",
+        "format-source": "🎤 {volume}%",
+        "format-source-muted": "🎤 🔇",
+        "format-icons": {
+            "headphone": "🎧",
+            "hands-free": "🎙️",
+            "headset": "🎧",
+            "phone": "📞",
+            "portable": "🔊",
+            "car": "🚗",
+            "default": ["🔈", "🔉", "🔊"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    }
+}

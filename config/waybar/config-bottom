@@ -1,0 +1,49 @@
+{
+    "name": "bottom-bar",
+    "layer": "top",
+    "position": "bottom",
+    "height": 35,
+    "spacing": 4,
+    "margin-bottom": 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "modules-left": ["custom/updates"],
+    "modules-center": ["cpu", "memory", "disk"],
+    "modules-right": ["temperature"],
+    
+    "custom/updates": {
+        "format": "📦 {}",
+        "exec": "pacman -Qu 2>/dev/null | wc -l || echo '0'",
+        "interval": 3600,
+        "tooltip": true,
+        "tooltip-format": "Available updates: {}",
+        "on-click": "kitty -e sudo pacman -Syu"
+    },
+    
+    "cpu": {
+        "format": "💻 {usage}%",
+        "tooltip": true,
+        "interval": 2,
+        "on-click": "kitty -e btop"
+    },
+    
+    "memory": {
+        "format": "🧠 {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f}G/{total:0.1f}G ({percentage}%)\nSwap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
+        "on-click": "kitty -e btop"
+    },
+    
+    "disk": {
+        "interval": 30,
+        "format": "💾 {percentage_used}%",
+        "path": "/",
+        "tooltip-format": "Used: {used} / Total: {total} ({percentage_used}%)"
+    },
+    
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["🧊", "❄️", "🌡️", "🔥"],
+        "tooltip": true
+    }
+}
