@@ -1,59 +1,88 @@
+/* Dark Theme Waybar Styles */
 * {
     border: none;
-    border-radius: 0;
-    font-family: "JetBrains Mono", "Font Awesome 6 Free";
-    font-weight: bold;
-    font-size: 13px;
+    border-radius: 8px;
+    font-family: "JetBrains Mono", "Noto Color Emoji", "Font Awesome 6 Free";
+    font-weight: 600;
+    font-size: 14px;
     min-height: 0;
 }
 
-window#waybar {
-    background-color: rgba(43, 48, 59, 0.9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: 0.5s;
+/* Top Bar Styling */
+window#waybar.top-bar {
+    background: linear-gradient(135deg, rgba(30, 30, 46, 0.95), rgba(49, 50, 68, 0.95));
+    border: 2px solid rgba(137, 180, 250, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    color: #cdd6f4;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+/* Bottom Bar Styling */
+window#waybar.bottom-bar {
+    background: linear-gradient(135deg, rgba(24, 24, 37, 0.95), rgba(49, 50, 68, 0.95));
+    border: 2px solid rgba(166, 227, 161, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    color: #cdd6f4;
 }
 
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
-}
-
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+/* Workspace Styling */
+#workspaces {
+    background: rgba(49, 50, 68, 0.8);
+    border-radius: 12px;
+    padding: 2px;
+    margin: 0 5px;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+    padding: 5px 10px;
+    margin: 2px;
+    background: rgba(88, 91, 112, 0.5);
+    color: #cdd6f4;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 16px;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(137, 180, 250, 0.6);
+    color: #1e1e2e;
+    transform: scale(1.1);
 }
 
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+#workspaces button.active {
+    background: linear-gradient(45deg, #89b4fa, #74c7ec);
+    color: #1e1e2e;
+    box-shadow: 0 4px 15px rgba(137, 180, 250, 0.4);
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background: linear-gradient(45deg, #f38ba8, #eba0ac);
+    color: #1e1e2e;
+    animation: urgentPulse 2s infinite;
 }
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+@keyframes urgentPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
+/* Module Base Styling */
+.modules-left > widget:first-child,
+.modules-center > widget,
+.modules-right > widget:last-child {
+    margin: 0 3px;
+}
+
+#custom-logo,
+#custom-weather,
+#custom-updates,
+#custom-media,
+#custom-power,
+#window,
+#mode,
 #clock,
 #battery,
 #cpu,
@@ -62,134 +91,202 @@ button:hover {
 #temperature,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
 #idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
+#tray {
+    background: rgba(49, 50, 68, 0.8);
+    color: #cdd6f4;
+    padding: 8px 12px;
+    margin: 2px;
+    border-radius: 10px;
+    border: 1px solid rgba(88, 91, 112, 0.5);
+    transition: all 0.3s ease;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
+/* Hover Effects */
+#custom-logo:hover,
+#custom-weather:hover,
+#custom-updates:hover,
+#custom-media:hover,
+#custom-power:hover,
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#idle_inhibitor:hover {
+    background: rgba(137, 180, 250, 0.2);
+    border-color: rgba(137, 180, 250, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+/* Window Title */
+#window {
+    background: rgba(49, 50, 68, 0.6);
+    color: #89b4fa;
+    font-style: italic;
+    min-width: 200px;
+    text-align: center;
 }
 
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+/* Custom Logo */
+#custom-logo {
+    background: linear-gradient(45deg, #89b4fa, #74c7ec);
+    color: #1e1e2e;
+    font-size: 18px;
+    font-weight: bold;
 }
 
+/* Clock */
 #clock {
-    background-color: #64727D;
+    background: linear-gradient(45deg, #f9e2af, #fab387);
+    color: #1e1e2e;
+    font-weight: bold;
 }
 
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
+/* System Resources */
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    background: linear-gradient(45deg, #a6e3a1, #94e2d5);
+    color: #1e1e2e;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background: linear-gradient(45deg, #f5c2e7, #cba6f7);
+    color: #1e1e2e;
 }
 
 #disk {
-    background-color: #964B00;
+    background: linear-gradient(45deg, #fab387, #f9e2af);
+    color: #1e1e2e;
 }
 
-#backlight {
-    background-color: #90b1b1;
-}
-
+/* Network & Connectivity */
 #network {
-    background-color: #2980b9;
+    background: linear-gradient(45deg, #89b4fa, #74c7ec);
+    color: #1e1e2e;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background: linear-gradient(45deg, #f38ba8, #eba0ac);
+    color: #1e1e2e;
 }
 
+#bluetooth {
+    background: linear-gradient(45deg, #74c7ec, #89dceb);
+    color: #1e1e2e;
+}
+
+#bluetooth.disabled {
+    background: rgba(88, 91, 112, 0.5);
+    color: #6c7086;
+}
+
+/* Audio */
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    background: linear-gradient(45deg, #cba6f7, #f5c2e7);
+    color: #1e1e2e;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background: rgba(88, 91, 112, 0.5);
+    color: #6c7086;
 }
 
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
+/* Battery */
+#battery {
+    background: linear-gradient(45deg, #a6e3a1, #94e2d5);
+    color: #1e1e2e;
 }
 
-#wireplumber.muted {
-    background-color: #f53c3c;
+#battery.charging {
+    background: linear-gradient(45deg, #f9e2af, #fab387);
+    color: #1e1e2e;
 }
 
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
+#battery.warning:not(.charging) {
+    background: linear-gradient(45deg, #fab387, #f9e2af);
+    color: #1e1e2e;
 }
 
-#custom-media.custom-spotify {
-    background-color: #66cc99;
+#battery.critical:not(.charging) {
+    background: linear-gradient(45deg, #f38ba8, #eba0ac);
+    color: #1e1e2e;
+    animation: criticalBlink 1s infinite;
 }
 
-#custom-media.custom-vlc {
-    background-color: #ffa000;
+@keyframes criticalBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
+/* Temperature */
 #temperature {
-    background-color: #f0932b;
+    background: linear-gradient(45deg, #94e2d5, #89dceb);
+    color: #1e1e2e;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background: linear-gradient(45deg, #f38ba8, #eba0ac);
+    color: #1e1e2e;
 }
 
+/* Backlight */
+#backlight {
+    background: linear-gradient(45deg, #f9e2af, #fab387);
+    color: #1e1e2e;
+}
+
+/* Idle Inhibitor */
+#idle_inhibitor {
+    background: rgba(49, 50, 68, 0.8);
+    color: #6c7086;
+}
+
+#idle_inhibitor.activated {
+    background: linear-gradient(45deg, #fab387, #f9e2af);
+    color: #1e1e2e;
+}
+
+/* Custom Modules */
+#custom-weather {
+    background: linear-gradient(45deg, #89dceb, #74c7ec);
+    color: #1e1e2e;
+}
+
+#custom-updates {
+    background: linear-gradient(45deg, #cba6f7, #f5c2e7);
+    color: #1e1e2e;
+}
+
+#custom-media {
+    background: linear-gradient(45deg, #f5c2e7, #cba6f7);
+    color: #1e1e2e;
+    min-width: 150px;
+}
+
+#custom-power {
+    background: linear-gradient(45deg, #f38ba8, #eba0ac);
+    color: #1e1e2e;
+    font-weight: bold;
+}
+
+#custom-power:hover {
+    background: linear-gradient(45deg, #eba0ac, #f38ba8);
+    transform: scale(1.05);
+}
+
+/* System Tray */
 #tray {
-    background-color: #2980b9;
+    background: rgba(49, 50, 68, 0.6);
+    border-radius: 10px;
+    padding: 5px;
 }
 
 #tray > .passive {
@@ -198,63 +295,25 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background: rgba(243, 139, 168, 0.8);
+    border-radius: 8px;
 }
 
-#idle_inhibitor {
-    background-color: #2d3748;
+/* Mode Indicator */
+#mode {
+    background: linear-gradient(45deg, #89b4fa, #74c7ec);
+    color: #1e1e2e;
+    font-weight: bold;
 }
 
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3748;
+/* Tooltip Styling */
+tooltip {
+    background: rgba(30, 30, 46, 0.95);
+    border: 2px solid rgba(137, 180, 250, 0.3);
+    border-radius: 10px;
+    color: #cdd6f4;
 }
 
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-    background-color: transparent;
+tooltip label {
+    color: #cdd6f4;
 }
