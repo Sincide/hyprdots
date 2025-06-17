@@ -88,6 +88,25 @@ install_core_packages() {
         "blueman"
         "papirus-icon-theme"
         "bibata-cursor-theme"
+        "gtk-engine-murrine"
+        "adwaita-icon-theme"
+        "gnome-themes-extra"
+        "ttf-jetbrains-mono"
+        "noto-fonts"
+        "noto-fonts-emoji"
+        "ttf-liberation"
+        "ttf-dejavu"
+        "thunar-volman"
+        "gvfs"
+        "tumbler"
+        "file-roller"
+        "p7zip"
+        "unrar"
+        "imv"
+        "mpv"
+        "jq"
+        "xdg-user-dirs"
+        "cliphist"
         "gsimplecal"
         "galculator"
     )
@@ -256,6 +275,25 @@ final_setup() {
     
     # Enable services
     sudo systemctl enable bluetooth
+    sudo systemctl enable NetworkManager
+    
+    # Create XDG user directories
+    xdg-user-dirs-update
+    
+    # Create screenshots directory
+    mkdir -p "$HOME/Pictures/Screenshots"
+    
+    # Make scripts executable
+    chmod +x "$HOME/.config/hypr/scripts/"*.sh 2>/dev/null || true
+    
+    # Set Fish as default shell
+    if command -v fish >/dev/null 2>&1; then
+        echo -e "${CYAN}Setting Fish as default shell...${NC}"
+        if ! grep -q "$(which fish)" /etc/shells; then
+            echo "$(which fish)" | sudo tee -a /etc/shells
+        fi
+        chsh -s "$(which fish)"
+    fi
     
     # Create desktop entry for Hyprland if using display manager
     if [[ ! -f /usr/share/wayland-sessions/hyprland.desktop ]]; then
