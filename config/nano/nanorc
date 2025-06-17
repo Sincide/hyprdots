@@ -1,0 +1,69 @@
+# Nano Configuration
+
+# Enable syntax highlighting
+include "/usr/share/nano/*.nanorc"
+
+# Interface options
+set titlebar
+set statusbar
+set boldtext
+set linenumbers
+set mouse
+
+# Search and replace
+set casesensitive
+set regexp
+
+# Indentation
+set tabsize 4
+set tabstospaces
+set autoindent
+
+# Backup options
+set backup
+set backupdir "~/.cache/nano/backup"
+
+# Behavior
+set multibuffer
+set nonewlines
+set positionlog
+set historylog
+
+# Appearance  
+set softwrap
+set atblanks
+set fill 80
+
+# Key bindings
+bind ^Q exit all
+bind ^S savefile main
+bind ^W writeout main
+bind ^O insert main
+bind ^H help all
+bind ^H exit help
+bind ^F whereis all
+bind ^G findnext all
+bind ^B wherewas all
+bind ^D findprev all
+bind ^R replace main
+bind ^X cut main
+bind ^C copy main
+bind ^V paste all  
+bind ^P location main
+bind ^T gotoline main
+bind ^A mark main
+bind ^6 copy main
+bind ^U paste all
+bind ^E execute main
+
+# Unbind problematic keys
+unbind ^K main
+unbind ^U main
+unbind ^N main
+unbind ^Y main
+unbind M-J main
+unbind M-T main
+
+# Color scheme (simple dark theme)
+set selectedcolor brightwhite,magenta
+set stripes
