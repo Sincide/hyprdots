@@ -134,7 +134,7 @@
         "margin-right": 10,
         "modules-left": ["custom/updates", "custom/media"],
         "modules-center": ["cpu", "memory", "disk"],
-        "modules-right": ["temperature", "backlight", "battery", "custom/power"],
+        "modules-right": ["custom/power"],
         
         "custom/updates": {
             "format": "📦 {}",
@@ -146,15 +146,11 @@
         },
         
         "custom/media": {
-            "format": "{icon} {}",
-            "return-type": "json",
+            "format": "🎵 {}",
             "max-length": 40,
-            "format-icons": {
-                "spotify": "🎵",
-                "default": "🎶"
-            },
-            "escape": true,
-            "exec": "playerctl --follow metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' 2>/dev/null || echo '{\"text\": \"No media\"}'"
+            "exec": "playerctl metadata --format '{{ artist }} - {{ title }}' 2>/dev/null || echo 'No media'",
+            "interval": 5,
+            "on-click": "playerctl play-pause"
         },
         
         "cpu": {
@@ -175,35 +171,6 @@
             "format": "💾 {percentage_used}%",
             "path": "/",
             "tooltip-format": "Used: {used} / Total: {total} ({percentage_used}%)"
-        },
-        
-        "temperature": {
-            "critical-threshold": 80,
-            "format": "{icon} {temperatureC}°C",
-            "format-icons": ["🧊", "❄️", "🌡️", "🔥"],
-            "tooltip": true
-        },
-        
-        "backlight": {
-            "format": "{icon} {percent}%",
-            "format-icons": ["🌑", "🌒", "🌓", "🌔", "🌕"],
-            "on-scroll-up": "brightnessctl set 5%+",
-            "on-scroll-down": "brightnessctl set 5%-",
-            "tooltip": false
-        },
-        
-        "battery": {
-            "states": {
-                "good": 95,
-                "warning": 30,
-                "critical": 15
-            },
-            "format": "{icon} {capacity}%",
-            "format-charging": "⚡ {capacity}%",
-            "format-plugged": "🔌 {capacity}%",
-            "format-alt": "{time} {icon}",
-            "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"],
-            "tooltip-format": "{timeTo}, {capacity}%"
         },
         
         "custom/power": {
