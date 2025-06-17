@@ -76,7 +76,7 @@ install_core_packages() {
         "pipewire-pulse"
         "pipewire-alsa"
         "wireplumber"
-        "brightnessctl"
+        ""
         "playerctl"
         "grim"
         "slurp"

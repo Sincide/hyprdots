@@ -8,15 +8,9 @@
         "margin-top": 5,
         "margin-left": 10,
         "margin-right": 10,
-        "modules-left": ["custom/logo", "hyprland/workspaces", "hyprland/mode"],
+        "modules-left": ["hyprland/workspaces"],
         "modules-center": ["hyprland/window"],
-        "modules-right": ["idle_inhibitor", "pulseaudio", "network", "bluetooth", "clock", "tray"],
-        
-        "custom/logo": {
-            "format": " 🐧",
-            "tooltip": false,
-            "on-click": "fuzzel"
-        },
+        "modules-right": ["pulseaudio", "network", "clock", "tray"],
         
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -58,16 +52,6 @@
             }
         },
         
-        "idle_inhibitor": {
-            "format": "{icon}",
-            "format-icons": {
-                "activated": "☕",
-                "deactivated": "😴"
-            },
-            "tooltip-format-activated": "Idle inhibitor active",
-            "tooltip-format-deactivated": "Idle inhibitor inactive"
-        },
-        
         "tray": {
             "icon-size": 20,
             "spacing": 8
@@ -88,18 +72,6 @@
             "format-disconnected": "❌ Disconnected",
             "format-alt": "📊 {ifname}: {ipaddr}/{cidr}",
             "on-click-right": "nm-connection-editor"
-        },
-        
-        "bluetooth": {
-            "format": "🔵",
-            "format-disabled": "🔴",
-            "format-off": "⚫",
-            "format-on": "🔵",
-            "format-connected": "🔗",
-            "tooltip-format": "{controller_alias}\t{controller_address}",
-            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-            "on-click": "blueman-manager"
         },
         
         "pulseaudio": {
@@ -132,9 +104,9 @@
         "margin-bottom": 5,
         "margin-left": 10,
         "margin-right": 10,
-        "modules-left": ["custom/updates", "custom/media"],
+        "modules-left": ["custom/updates"],
         "modules-center": ["cpu", "memory", "disk"],
-        "modules-right": ["custom/power"],
+        "modules-right": ["temperature"],
         
         "custom/updates": {
             "format": "📦 {}",
@@ -143,14 +115,6 @@
             "tooltip": true,
             "tooltip-format": "Available updates: {}",
             "on-click": "kitty -e sudo pacman -Syu"
-        },
-        
-        "custom/media": {
-            "format": "🎵 {}",
-            "max-length": 40,
-            "exec": "playerctl metadata --format '{{ artist }} - {{ title }}' 2>/dev/null || echo 'No media'",
-            "interval": 5,
-            "on-click": "playerctl play-pause"
         },
         
         "cpu": {
@@ -173,10 +137,11 @@
             "tooltip-format": "Used: {used} / Total: {total} ({percentage_used}%)"
         },
         
-        "custom/power": {
-            "format": "⚡",
-            "tooltip": false,
-            "on-click": "killall Hyprland"
+        "temperature": {
+            "critical-threshold": 80,
+            "format": "{icon} {temperatureC}°C",
+            "format-icons": ["🧊", "❄️", "🌡️", "🔥"],
+            "tooltip": true
         }
     }
 ]
