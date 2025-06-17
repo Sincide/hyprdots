@@ -70,6 +70,8 @@ install_core_packages() {
         "xdg-desktop-portal-hyprland"
         "qt5-wayland"
         "qt6-wayland"
+        "qt5ct"
+        "qt6ct"
         "pipewire"
         "pipewire-pulse"
         "pipewire-alsa"
@@ -84,6 +86,10 @@ install_core_packages() {
         "bluez"
         "bluez-utils"
         "blueman"
+        "papirus-icon-theme"
+        "bibata-cursor-theme"
+        "gsimplecal"
+        "galculator"
     )
     
     for package in "${packages[@]}"; do

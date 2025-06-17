@@ -161,7 +161,7 @@
                 "default": "🎶"
             },
             "escape": true,
-            "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null"
+            "exec": "playerctl --follow metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' 2>/dev/null || echo '{\"text\": \"No media\"}'"
         },
         
         "cpu": {
