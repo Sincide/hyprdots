@@ -43,7 +43,7 @@ handle_error() {
 
 update_system() {
     echo -e "${BLUE}Updating system packages...${NC}"
-    if ! sudo pacman -Syu --noconfirm; then
+    if ! sudo pacman -Syu --noconfirm --needed; then
         handle_error "Failed to update system packages"
     fi
     echo -e "${GREEN}System updated successfully.${NC}"
@@ -112,7 +112,7 @@ install_core_packages() {
     
     for package in "${packages[@]}"; do
         echo -e "${CYAN}Installing $package...${NC}"
-        if ! sudo pacman -S --noconfirm "$package"; then
+        if ! sudo pacman -S --noconfirm --needed "$package"; then
             handle_error "Failed to install $package"
         fi
     done
@@ -158,7 +158,7 @@ install_fonts() {
     
     for font in "${fonts[@]}"; do
         echo -e "${CYAN}Installing $font...${NC}"
-        if ! sudo pacman -S --noconfirm "$font"; then
+        if ! sudo pacman -S --noconfirm --needed "$font"; then
             handle_error "Failed to install $font"
         fi
     done
