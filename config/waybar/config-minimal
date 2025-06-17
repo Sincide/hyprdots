@@ -1,0 +1,70 @@
+[
+    {
+        "name": "top-bar",
+        "layer": "top",
+        "position": "top",
+        "height": 40,
+        "spacing": 4,
+        "margin-top": 5,
+        "margin-left": 10,
+        "margin-right": 10,
+        "modules-left": ["hyprland/workspaces"],
+        "modules-center": ["hyprland/window"],
+        "modules-right": ["pulseaudio", "network", "clock", "tray"],
+        
+        "hyprland/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "format": "{name}: {windows}",
+            "format-window-separator": " | ",
+            "window-rewrite-default": "",
+            "window-rewrite": {
+                "title<.*youtube.*>": "󰗃",
+                "class<firefox>": "󰈹",
+                "class<kitty>": "",
+                "class<thunar>": "󰉋"
+            }
+        },
+        
+        "hyprland/window": {
+            "format": "{}",
+            "max-length": 50
+        },
+        
+        "pulseaudio": {
+            "format": "{icon} {volume}%",
+            "format-bluetooth": "󰂯 {volume}%",
+            "format-bluetooth-muted": "󰂲",
+            "format-muted": "󰖁",
+            "format-icons": {
+                "headphone": "󰋋",
+                "hands-free": "󰋋",
+                "headset": "󰋋",
+                "phone": "󰄜",
+                "portable": "󰦧",
+                "car": "󰄋",
+                "default": ["󰕿", "󰖀", "󰕾"]
+            },
+            "on-click": "pavucontrol"
+        },
+        
+        "network": {
+            "format-wifi": "󰤨 {essid}",
+            "format-ethernet": "󰈀 Connected",
+            "format-linked": "󰈀 {ifname} (No IP)",
+            "format-disconnected": "󰤭 Disconnected",
+            "on-click": "nm-connection-editor"
+        },
+        
+        "clock": {
+            "format": "󰥔 {:%H:%M}",
+            "format-alt": "󰃭 {:%Y-%m-%d}",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        },
+        
+        "tray": {
+            "icon-size": 20,
+            "spacing": 8
+        }
+    }
+]

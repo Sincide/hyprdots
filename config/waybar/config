@@ -10,7 +10,7 @@
         "margin-right": 10,
         "modules-left": ["custom/logo", "hyprland/workspaces", "hyprland/mode"],
         "modules-center": ["hyprland/window"],
-        "modules-right": ["custom/weather", "idle_inhibitor", "pulseaudio", "network", "bluetooth", "clock", "tray"],
+        "modules-right": ["idle_inhibitor", "pulseaudio", "network", "bluetooth", "clock", "tray"],
         
         "custom/logo": {
             "format": " 🐧",
@@ -56,13 +56,6 @@
                 "(.*) - Visual Studio Code": "💻 VSCode: $1",
                 "(.*) - Thunar": "📁 Files: $1"
             }
-        },
-        
-        "custom/weather": {
-            "format": "{}",
-            "exec": "curl -s 'wttr.in/?format=1' | head -1",
-            "interval": 1800,
-            "tooltip": false
         },
         
         "idle_inhibitor": {
@@ -145,11 +138,11 @@
         
         "custom/updates": {
             "format": "📦 {}",
-            "exec": "checkupdates | wc -l",
+            "exec": "pacman -Qu 2>/dev/null | wc -l || echo '0'",
             "interval": 3600,
             "tooltip": true,
             "tooltip-format": "Available updates: {}",
-            "on-click": "kitty -e yay -Syu"
+            "on-click": "kitty -e sudo pacman -Syu"
         },
         
         "custom/media": {
@@ -216,7 +209,7 @@
         "custom/power": {
             "format": "⚡",
             "tooltip": false,
-            "on-click": "wlogout"
+            "on-click": "killall Hyprland"
         }
     }
 ]
