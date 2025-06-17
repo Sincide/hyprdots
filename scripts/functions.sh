@@ -164,27 +164,42 @@ setup_fish_shell() {
 setup_config_symlinks() {
     echo -e "${BLUE}Setting up configuration symlinks...${NC}"
     
-    local config_dirs=("hypr" "waybar" "fuzzel" "kitty" "dunst" "fish" "nano")
+    local config_dirs=("hypr" "waybar" "fuzzel" "kitty" "dunst" "fish" "nano" "gtk-3.0" "gtk-4.0" "qt5ct" "qt6ct" "Thunar" "fontconfig" "mimeapps.list")
     
     # Create ~/.config if it doesn't exist
     mkdir -p "$HOME/.config"
     
-    for dir in "${config_dirs[@]}"; do
-        local source_dir="${SCRIPT_DIR}/config/${dir}"
-        local target_dir="$HOME/.config/${dir}"
+    for item in "${config_dirs[@]}"; do
+        local source_path="${SCRIPT_DIR}/config/${item}"
+        local target_path="$HOME/.config/${item}"
         
-        echo -e "${CYAN}Setting up $dir configuration...${NC}"
+        echo -e "${CYAN}Setting up $item configuration...${NC}"
         
-        # Backup existing config if it exists
-        if [[ -e "$target_dir" ]]; then
-            local backup_dir="${target_dir}.backup.$(date +%Y%m%d_%H%M%S)"
-            echo -e "${YELLOW}Backing up existing $dir config to $backup_dir${NC}"
-            mv "$target_dir" "$backup_dir"
-        fi
-        
-        # Create symlink
-        if ! ln -sf "$source_dir" "$target_dir"; then
-            handle_error "Failed to create symlink for $dir"
+        # Handle files vs directories differently
+        if [[ -f "$source_path" ]]; then
+            # It's a file
+            if [[ -e "$target_path" ]]; then
+                local backup_path="${target_path}.backup.$(date +%Y%m%d_%H%M%S)"
+                echo -e "${YELLOW}Backing up existing $item to $backup_path${NC}"
+                mv "$target_path" "$backup_path"
+            fi
+            
+            # Create symlink for file
+            if ! ln -sf "$source_path" "$target_path"; then
+                handle_error "Failed to create symlink for $item"
+            fi
+        else
+            # It's a directory
+            if [[ -e "$target_path" ]]; then
+                local backup_path="${target_path}.backup.$(date +%Y%m%d_%H%M%S)"
+                echo -e "${YELLOW}Backing up existing $item to $backup_path${NC}"
+                mv "$target_path" "$backup_path"
+            fi
+            
+            # Create symlink for directory
+            if ! ln -sf "$source_path" "$target_path"; then
+                handle_error "Failed to create symlink for $item"
+            fi
         fi
     done
     
@@ -229,20 +244,8 @@ setup_wallpapers() {
 setup_environment() {
     echo -e "${BLUE}Setting up environment variables...${NC}"
     
-    # Create environment file for Hyprland
-    local env_file="$HOME/.config/hypr/hyprland.env"
-    cat > "$env_file" << 'EOF'
-# Environment variables for Hyprland
-env = XCURSOR_SIZE,24
-env = QT_QPA_PLATFORMTHEME,qt5ct
-env = QT_QPA_PLATFORM,wayland;xcb
-env = GDK_BACKEND,wayland,x11
-env = XDG_CURRENT_DESKTOP,Hyprland
-env = XDG_SESSION_TYPE,wayland
-env = XDG_SESSION_DESKTOP,Hyprland
-env = MOZ_ENABLE_WAYLAND,1
-env = WLR_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0
-EOF
+    # Create environment file for Hyprland (this will be replaced by symlink)
+    echo -e "${YELLOW}Environment variables will be managed via symlinked configuration.${NC}"
     
     echo -e "${GREEN}Environment configured successfully.${NC}"
     echo

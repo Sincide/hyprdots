@@ -155,31 +155,31 @@ end
 set -gx CLICOLOR 1
 set -gx LSCOLORS ExFxCxDxBxegedabagacad
 
-# Fish syntax highlighting colors
-set fish_color_normal normal
-set fish_color_command 6CB6EB
-set fish_color_keyword DA70D6
-set fish_color_quote C9A96E
-set fish_color_redirection BF616A
-set fish_color_end 6CB6EB
-set fish_color_error FF6B6B
-set fish_color_param 4EC9B0
-set fish_color_selection white --bold --background=brblack
-set fish_color_search_match bryellow --background=brblack
+# Fish syntax highlighting colors (Catppuccin Mocha)
+set fish_color_normal cdd6f4
+set fish_color_command 89b4fa
+set fish_color_keyword f5c2e7
+set fish_color_quote a6e3a1
+set fish_color_redirection f38ba8
+set fish_color_end fab387
+set fish_color_error f38ba8
+set fish_color_param f9e2af
+set fish_color_selection --background=313244
+set fish_color_search_match --background=313244
 set fish_color_history_current --bold
-set fish_color_operator 6CB6EB
-set fish_color_escape 6CB6EB
-set fish_color_cwd green
-set fish_color_cwd_root red
+set fish_color_operator 94e2d5
+set fish_color_escape cba6f7
+set fish_color_cwd 89b4fa
+set fish_color_cwd_root f38ba8
 set fish_color_valid_path --underline
-set fish_color_autosuggestion 555
-set fish_color_user brgreen
-set fish_color_host normal
-set fish_color_cancel -r
-set fish_pager_color_completion normal
-set fish_pager_color_description B3A06D yellow
-set fish_pager_color_prefix white --bold --underline
-set fish_pager_color_progress brwhite --background=cyan
+set fish_color_autosuggestion 6c7086
+set fish_color_user a6e3a1
+set fish_color_host 89b4fa
+set fish_color_cancel f38ba8
+set fish_pager_color_completion cdd6f4
+set fish_pager_color_description 6c7086
+set fish_pager_color_prefix 89b4fa --bold --underline
+set fish_pager_color_progress --background=313244
 
 # Vi mode
 fish_vi_key_bindings

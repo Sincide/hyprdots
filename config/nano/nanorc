@@ -64,6 +64,12 @@ unbind ^Y main
 unbind M-J main
 unbind M-T main
 
-# Color scheme (simple dark theme)
+# Color scheme (Catppuccin Mocha dark theme)
+set titlecolor brightwhite,blue
+set statuscolor brightwhite,green
+set errorcolor brightwhite,red
 set selectedcolor brightwhite,magenta
 set stripes
+set numbercolor cyan
+set keycolor cyan
+set functioncolor yellow
