@@ -14,7 +14,6 @@ window#waybar.top-bar {
     border: 2px solid rgba(137, 180, 250, 0.3);
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
     color: #cdd6f4;
 }
 
@@ -24,7 +23,6 @@ window#waybar.bottom-bar {
     border: 2px solid rgba(166, 227, 161, 0.3);
     border-radius: 15px;
     box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
     color: #cdd6f4;
 }
 
