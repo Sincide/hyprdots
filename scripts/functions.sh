@@ -164,7 +164,7 @@ setup_fish_shell() {
 setup_config_symlinks() {
     echo -e "${BLUE}Setting up configuration symlinks...${NC}"
     
-    local config_dirs=("hypr" "waybar" "fuzzel" "kitty" "dunst" "fish" "nano" "gtk-3.0" "gtk-4.0" "qt5ct" "qt6ct" "Thunar" "fontconfig" "mimeapps.list")
+    local config_dirs=("hypr" "waybar" "fuzzel" "kitty" "dunst" "fish" "nano" "gtk-3.0" "gtk-4.0" "qt5ct" "qt6ct" "Thunar" "fontconfig" "mimeapps.list" "user-dirs.dirs")
     
     # Create ~/.config if it doesn't exist
     mkdir -p "$HOME/.config"
